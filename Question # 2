@@ -1,0 +1,38 @@
+```python
+class TreeNode:
+    def __init__(self, key):
+        self.key = key
+        self.left = None
+        self.right = None
+
+def insert_node(root, key):
+    if root is None:
+        return TreeNode(key)
+    
+    if key < root.key:
+        root.left = insert_node(root.left, key)
+    elif key > root.key:
+        root.right = insert_node(root.right, key)
+
+    return root
+```
+
+In this example:
+
+- `TreeNode` is a simple class representing a node in a binary tree, with a `key`, `left` child, and `right` child.
+- The `insert_node` function takes the root of the binary tree and a key to be inserted. It recursively traverses the tree to find the appropriate position for the new node based on the key value.
+
+You can use the `insert_node` function as follows:
+
+```python
+# Example usage
+root = None
+keys = [5, 3, 7, 2, 4, 6, 8]
+
+for key in keys:
+    root = insert_node(root, key)
+```
+
+After running this code, you will have a binary tree with the keys `[5, 3, 7, 2, 4, 6, 8]`. The structure of the tree will depend on the order in which the keys are inserted.
+
+Remember that the function assumes the keys are comparable (supporting `<` and `>` operators). If your keys have different types or need a custom comparison logic, you may need to modify the comparison conditions accordingly.
