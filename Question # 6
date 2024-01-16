@@ -1,0 +1,39 @@
+To determine if a binary tree is a Binary Search Tree (BST), we need to check if the values in each node follow the BST property. The BST property states that for every node:
+
+1. All nodes in its left subtree must have values less than the node's value.
+2. All nodes in its right subtree must have values greater than the node's value.
+3. The left and right subtrees must also be BSTs.
+
+Here's a Python function to check if a binary tree is a BST:
+
+```python
+class TreeNode:
+    def __init__(self, key):
+        self.key = key
+        self.left = None
+        self.right = None
+
+def is_bst(node, min_value=float('-inf'), max_value=float('inf')):
+    if node is None:
+        return True
+
+    # Check if the node's value is within the valid range
+    if not (min_value < node.key < max_value):
+        return False
+
+    # Recursively check left and right subtrees with updated ranges
+    return (is_bst(node.left, min_value, node.key) and
+            is_bst(node.right, node.key, max_value))
+
+# Example usage
+root = TreeNode(2)
+root.left = TreeNode(1)
+root.right = TreeNode(3)
+
+result = is_bst(root)
+print("Is the binary tree a BST?", result)
+```
+
+In this example, the tree is a valid BST with the values `[1, 2, 3]`. The function `is_bst` returns `True` if the binary tree follows the BST property, and `False` otherwise.
+
+You can modify the `TreeNode` class and the tree structure based on your specific use case.
