@@ -1,0 +1,46 @@
+```python
+class TreeNode:
+    def __init__(self, key):
+        self.key = key
+        self.left = None
+        self.right = None
+
+def count_nodes(root):
+    if root is None:
+        return 0
+    else:
+        return 1 + count_nodes(root.left) + count_nodes(root.right)
+```
+
+You can use this function with a binary tree created using the `TreeNode` class. For example:
+
+```python
+# Example binary tree
+root = TreeNode(1)
+root.left = TreeNode(2)
+root.right = TreeNode(3)
+root.left.left = TreeNode(4)
+root.left.right = TreeNode(5)
+
+# Count the nodes
+node_count = count_nodes(root)
+print("Number of nodes in the binary tree:", node_count)
+```
+
+In this example, the tree looks like:
+
+```
+    1
+   / \
+  2   3
+ / \
+4   5
+```
+
+The output will be:
+
+```
+Number of nodes in the binary tree: 5
+```
+
+The `count_nodes` function recursively counts the nodes in the binary tree. If the tree is empty (root is `None`), the count is 0. Otherwise, it counts the current node and recursively counts the nodes in the left and right subtrees.
