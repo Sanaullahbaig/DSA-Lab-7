@@ -1,0 +1,40 @@
+```python
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.children = []
+
+    def add_child(self, child):
+        self.children.append(child)
+```
+
+In this Node class:
+
+- The `__init__` method initializes a node with a given `data` value and an empty list of children.
+- The `add_child` method allows adding a child node to the current node.
+
+You can use this class as a building block to create a tree structure by connecting nodes through the `add_child` method. For example:
+
+```python
+# Creating nodes
+root = Node("Root")
+child1 = Node("Child 1")
+child2 = Node("Child 2")
+child3 = Node("Child 3")
+
+# Connecting nodes to form a tree
+root.add_child(child1)
+root.add_child(child2)
+child2.add_child(child3)
+```
+
+This results in a tree structure like this:
+
+```
+  Root
+  ├── Child 1
+  └── Child 2
+      └── Child 3
+```
+
+You can extend this class or add more methods based on the specific requirements of your tree structure.
